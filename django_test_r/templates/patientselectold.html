@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Patient Select (Staff View)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color:#000000;
+      height: 100%;
+    }
+
+    #imageContent {
+      position: fixed;
+      bottom : 10px;
+      left : 10px;
+      /*margin-top: -40px*/
+    }
+    
+    #umbcimageContent {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+    }
+    #mainContent {
+    
+    height: 590px;
+  right: 10px;
+    
+}
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #000000;
+      color: white;
+      padding: 10px;
+  
+    }
+h1, h3 {
+    font-family: 'Proxima Nova';
+}
+
+/*#h1
+{
+color:#00bfff;
+
+}*/
+.bg-1 {
+    background-color: #FFFFFF; /*black*/
+    /*color: #0099ff;*/
+    color: #000000;
+}
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+      <li style="float:right;color: white"> <span class="glyphicon glyphicon-user" style="font-size:20px;color:white;" id = "icon">  <h5> {{ doctorName }} </h5></span></a></li>
+        
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container" id="h1">
+  <h2>Patient Details (Select one patient)</h2>
+  <form role="form" action="/getselectedpatient/" method="get">
+  <div class="panel-group">
+    {% for p in patientData %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+      <tr>
+      <td> <a data-toggle="collapse" href="#collapse1"> <span class="glyphicon glyphicon-collapse-down"> </span>{{ p.patientName }}</a> </td>
+      <td>
+      <!-- <div class="checkbox">  -->
+        <label><input type="radio" value="{{p.patientName}}" name="checks" style="vertical-align: middle margin: 0px;"></label> 
+      <!-- </div> -->
+
+      </td>
+      </tr>
+      </h4>
+      </div>
+        <!-- h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><span class="glyphicon glyphicon-collapse-down">{{ p.patientName }}</span></a><div class="checkbox">
+        <label><input type="checkbox" value="{{p.patientName}}" name="checks"></label>
+      </div>
+        </h4> -->
+        
+      
+      <div id="collapse1" class="panel-collapse collapse">
+        <ul class="list-group">
+          <li class="list-group-item">Patient Name : {{ p.patientName }}</li>
+          <li class="list-group-item">Hospital Ward : {{ p.patientHward }}</li>
+          <li class="list-group-item">Doctor Name : {{ p.doctorName }}</li>
+          <li class="list-group-item">Purpose : {{ p.purpose }}</li>
+        </ul>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+
+<button type="submit" class="btn btn-primary">Select Patient</button>
+</form>
+</div>
+
+
+<!-- <button type="submit" class="btn btn-info" id="button" value="{{ p.patientName }}"> -->
+    <!-- </button> -->

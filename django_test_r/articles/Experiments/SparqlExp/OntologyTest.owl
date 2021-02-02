@@ -1,0 +1,4346 @@
+@prefix : <http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrl2: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@base <http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3> .
+
+<http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+swrl2:isRuleEnabled rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#callsInEmergency
+:callsInEmergency rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :providesAmbulanceService ;
+                  rdfs:domain :Patient ;
+                  rdfs:range :MedicalAssistants .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#checksIn
+:checksIn rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isUpdatedBy ;
+          rdfs:domain :Patient ;
+          rdfs:range :MedicalAssistants .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#getsTreatedby
+:getsTreatedby rdf:type owl:ObjectProperty ;
+               owl:inverseOf :providesTreatment ;
+               rdfs:domain :Patient ;
+               rdfs:range :Doctor ,
+                          :NursePractitioner .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#givesMedicinesTo
+:givesMedicinesTo rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :isGivenMedicinesby ;
+                  rdfs:domain :Pharmacist ;
+                  rdfs:range :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#hasId
+:hasId rdf:type owl:ObjectProperty ;
+       owl:inverseOf :isIdentifiedBy ;
+       rdfs:domain :Doctor ,
+                   :Nurse ,
+                   :NursePractitioner ,
+                   :Patient ,
+                   :Pharmacist ,
+                   :Technician ;
+       rdfs:range :UID .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#isCertifiedBy
+:isCertifiedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :Billing ,
+                           :Doctor ,
+                           :MedicalAssistants ,
+                           :Nurse ,
+                           :NursePractitioner ,
+                           :Pharmacist ,
+                           :Technician ;
+               rdfs:range :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#isCreatedBy
+:isCreatedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :EHR ;
+             rdfs:range :Doctor ,
+                        :NursePractitioner ,
+                        :Technician .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#isGivenMedicinesby
+:isGivenMedicinesby rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#isIdentifiedBy
+:isIdentifiedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#isRegisteredWith
+:isRegisteredWith rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Patient ;
+                  rdfs:range :MedicalInsuranceCompany .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#isUpdatedBy
+:isUpdatedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#isUsedBy
+:isUsedBy rdf:type owl:ObjectProperty ;
+          rdfs:domain :Machinery ;
+          rdfs:range :Technician .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#performsTeston
+:performsTeston rdf:type owl:ObjectProperty ;
+                rdfs:domain :Doctor ,
+                            :Nurse ,
+                            :NursePractitioner ,
+                            :Technician ;
+                rdfs:range :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#providesAmbulanceService
+:providesAmbulanceService rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#providesTreatment
+:providesTreatment rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Doctor ,
+                               :NursePractitioner ;
+                   rdfs:range :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#reportsTo
+:reportsTo rdf:type owl:ObjectProperty ;
+           rdfs:domain :Doctor ,
+                       :JuniorDoctor ,
+                       :Nurse ;
+           rdfs:range :Doctor ,
+                      :SeniorDoctor .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#schedulesApptWith
+:schedulesApptWith rdf:type owl:ObjectProperty ;
+                   rdfs:domain :MedicalAssistants ;
+                   rdfs:range :Doctor ,
+                              :NursePractitioner ,
+                              :Technician .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#specializesIn
+:specializesIn rdf:type owl:ObjectProperty ;
+               rdfs:domain :Doctor ,
+                           :NursePractitioner ,
+                           :Technician ;
+               rdfs:range :Specialization .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#worksIn
+:worksIn rdf:type owl:ObjectProperty ;
+         rdfs:domain :Doctor ,
+                     :Nurse ,
+                     :NursePractitioner ;
+         rdfs:range :HospitalWard .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#worksWith
+:worksWith rdf:type owl:ObjectProperty ;
+           rdfs:domain :Billing ;
+           rdfs:range :MedicalInsuranceCompany .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModify
+:canModify rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Doctor ,
+                       :SeniorDoctor ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyAllergies
+:canModifyAllergies rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyBillingInfo
+:canModifyBillingInfo rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyDiagnoses
+:canModifyDiagnoses rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyDoctorNotes
+:canModifyDoctorNotes rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyImmunizationDates
+:canModifyImmunizationDates rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyLabResults
+:canModifyLabResults rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyMedication
+:canModifyMedication rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyPrescription
+:canModifyPrescription rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canModifyVitalStats
+:canModifyVitalStats rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canRead
+:canRead rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Doctor ,
+                     :JuniorDoctor ;
+         rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadAllergies
+:canReadAllergies rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadBillingInfo
+:canReadBillingInfo rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadDiagnoses
+:canReadDiagnoses rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadDoctorNotes
+:canReadDoctorNotes rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadImmunizationDates
+:canReadImmunizationDates rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadLabResults
+:canReadLabResults rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadMedication
+:canReadMedication rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadPrescription
+:canReadPrescription rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#canReadVitalStats
+:canReadVitalStats rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#hasContact
+:hasContact rdf:type owl:DatatypeProperty ;
+            rdfs:domain :MedicalAssistants ;
+            rdfs:range xsd:long .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Doctor ,
+                     :Nurse ,
+                     :NursePractitioner ,
+                     :Patient ,
+                     :Pharmacist ,
+                     :Technician ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#try
+:try rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Doctor ,
+                 :SeniorDoctor ;
+     rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Billing
+:Billing rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Certification
+:Certification rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Doctor
+:Doctor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#EHR
+:EHR rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#HospitalWard
+:HospitalWard rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#JuniorDoctor
+:JuniorDoctor rdf:type owl:Class ;
+              rdfs:subClassOf :Doctor .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Machinery
+:Machinery rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#MedicalAssistants
+:MedicalAssistants rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#MedicalInsuranceCompany
+:MedicalInsuranceCompany rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Nurse
+:Nurse rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#NursePractitioner
+:NursePractitioner rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Patient
+:Patient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Pharmacist
+:Pharmacist rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#SeniorDoctor
+:SeniorDoctor rdf:type owl:Class ;
+              rdfs:subClassOf :Doctor .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Specialization
+:Specialization rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Technician
+:Technician rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#UID
+:UID rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#
+: rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Aaron
+:Aaron rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Abigail
+:Abigail rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Adam
+:Adam rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Adrian
+:Adrian rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Adriana
+:Adriana rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Adrienne
+:Adrienne rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Aimee
+:Aimee rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alan
+:Alan rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Albert
+:Albert rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alec
+:Alec rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alex
+:Alex rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alexa
+:Alexa rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alexander
+:Alexander rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alexandra
+:Alexandra rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alexandria
+:Alexandria rdf:type owl:NamedIndividual ,
+                     :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alexis
+:Alexis rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alice
+:Alice rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alicia
+:Alicia rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alisha
+:Alisha rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alison
+:Alison rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Allen
+:Allen rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Allergies
+:Allergies rdf:type owl:NamedIndividual ,
+                    :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Allison
+:Allison rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alvin
+:Alvin rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Alyssa
+:Alyssa rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Amanda
+:Amanda rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Amber
+:Amber rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Amy
+:Amy rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ana
+:Ana rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Andre
+:Andre rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Andrea
+:Andrea rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Andres
+:Andres rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Andrew
+:Andrew rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Angel
+:Angel rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Angela
+:Angela rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Angelica
+:Angelica rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Anita
+:Anita rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ann
+:Ann rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Anna
+:Anna rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Anne
+:Anne rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Annette
+:Annette rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Anthony
+:Anthony rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Antonio
+:Antonio rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#April
+:April rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ariana
+:Ariana rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ariel
+:Ariel rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Arthur
+:Arthur rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ashlee
+:Ashlee rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ashley
+:Ashley rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Audrey
+:Audrey rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Austin
+:Austin rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Autumn
+:Autumn rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bailey
+:Bailey rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Barbara
+:Barbara rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Becky
+:Becky rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Belinda
+:Belinda rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Benjamin
+:Benjamin rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bernard
+:Bernard rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Beth
+:Beth rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bethany
+:Bethany rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Betty
+:Betty rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Beverly
+:Beverly rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bianca
+:Bianca rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#BillingInfo
+:BillingInfo rdf:type owl:NamedIndividual ,
+                      :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#BillingPerson
+:BillingPerson rdf:type owl:NamedIndividual ,
+                        :Billing ,
+                        :MedicalAssistants ,
+                        :Nurse ,
+                        :NursePractitioner ,
+                        :Pharmacist ,
+                        :SeniorDoctor ,
+                        :Technician ;
+               :isCertifiedBy :CBCS ;
+               :canModify "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Billy
+:Billy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Blake
+:Blake rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bobby
+:Bobby rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bonnie
+:Bonnie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brad
+:Brad rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bradley
+:Bradley rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brady
+:Brady rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brandi
+:Brandi rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brandon
+:Brandon rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brandy
+:Brandy rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Breanna
+:Breanna rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brenda
+:Brenda rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brendan
+:Brendan rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brent
+:Brent rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brett
+:Brett rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brian
+:Brian rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Briana
+:Briana rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brianna
+:Brianna rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bridget
+:Bridget rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brittany
+:Brittany rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brittney
+:Brittney rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Brooke
+:Brooke rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bruce
+:Bruce rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Bryan
+:Bryan rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#CBCS
+:CBCS rdf:type owl:NamedIndividual ,
+               :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#CCMA
+:CCMA rdf:type owl:NamedIndividual ,
+               :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#CET
+:CET rdf:type owl:NamedIndividual ,
+              :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#CMAA
+:CMAA rdf:type owl:NamedIndividual ,
+               :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#CPT
+:CPT rdf:type owl:NamedIndividual ,
+              :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#CPhT
+:CPhT rdf:type owl:NamedIndividual ,
+               :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#CTScanner
+:CTScanner rdf:type owl:NamedIndividual ,
+                    :Machinery ;
+           :isUsedBy :LabTechnician .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Caitlin
+:Caitlin rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Calvin
+:Calvin rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cameron
+:Cameron rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Candace
+:Candace rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cardiac
+:Cardiac rdf:type owl:NamedIndividual ,
+                  :HospitalWard .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cardiologist
+:Cardiologist rdf:type owl:NamedIndividual ,
+                       :Specialization .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Carl
+:Carl rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Carla
+:Carla rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Carlos
+:Carlos rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Carly
+:Carly rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Carmen
+:Carmen rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Carol
+:Carol rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Caroline
+:Caroline rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Carolyn
+:Carolyn rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Carrie
+:Carrie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Casey
+:Casey rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cassandra
+:Cassandra rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cassidy
+:Cassidy rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cassie
+:Cassie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Catherine
+:Catherine rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cathy
+:Cathy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Chad
+:Chad rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Charlene
+:Charlene rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Charles
+:Charles rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Charlotte
+:Charlotte rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Chase
+:Chase rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Chelsea
+:Chelsea rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cheryl
+:Cheryl rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cheyenne
+:Cheyenne rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Chloe
+:Chloe rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Chris
+:Chris rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Christian
+:Christian rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Christie
+:Christie rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Christina
+:Christina rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Christine
+:Christine rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Christopher
+:Christopher rdf:type owl:NamedIndividual ,
+                      :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Christy
+:Christy rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cindy
+:Cindy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Claudia
+:Claudia rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Clifford
+:Clifford rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Clinton
+:Clinton rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cody
+:Cody rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cole
+:Cole rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Colin
+:Colin rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Colleen
+:Colleen rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Collin
+:Collin rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Colton
+:Colton rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Connie
+:Connie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Connor
+:Connor rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Corey
+:Corey rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cory
+:Cory rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Courtney
+:Courtney rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Craig
+:Craig rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cristian
+:Cristian rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cristina
+:Cristina rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Crystal
+:Crystal rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Curtis
+:Curtis rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Cynthia
+:Cynthia rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#DNP
+:DNP rdf:type owl:NamedIndividual ,
+              :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dakota
+:Dakota rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dale
+:Dale rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dalton
+:Dalton rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Damon
+:Damon rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dan
+:Dan rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dana
+:Dana rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Daniel
+:Daniel rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Danielle
+:Danielle rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Danny
+:Danny rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Darius
+:Darius rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Darlene
+:Darlene rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Darrell
+:Darrell rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Darren
+:Darren rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Darryl
+:Darryl rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dave
+:Dave rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#David
+:David rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dawn
+:Dawn rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dean
+:Dean rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Deanna
+:Deanna rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Debbie
+:Debbie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Deborah
+:Deborah rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Debra
+:Debra rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Denise
+:Denise rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dennis
+:Dennis rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Derek
+:Derek rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Derrick
+:Derrick rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Desiree
+:Desiree rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Destiny
+:Destiny rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Devin
+:Devin rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Diagnoses
+:Diagnoses rdf:type owl:NamedIndividual ,
+                    :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#DiagnosticImaging
+:DiagnosticImaging rdf:type owl:NamedIndividual ,
+                            :HospitalWard .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Diana
+:Diana rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Diane
+:Diane rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dillon
+:Dillon rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#DoctorNotes
+:DoctorNotes rdf:type owl:NamedIndividual ,
+                      :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Donald
+:Donald rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Donna
+:Donna rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Doris
+:Doris rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dorothy
+:Dorothy rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Douglas
+:Douglas rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dr.
+<http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dr.> rdf:type owl:NamedIndividual ,
+                                                                                           :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Drew
+:Drew rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Duane
+:Duane rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dustin
+:Dustin rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dwayne
+:Dwayne rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Dylan
+:Dylan rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#EMT-B
+:EMT-B rdf:type owl:NamedIndividual ,
+                :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#ENT
+:ENT rdf:type owl:NamedIndividual ,
+              :Specialization .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Earl
+:Earl rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ebony
+:Ebony rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Eddie
+:Eddie rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Eduardo
+:Eduardo rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Edward
+:Edward rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Edwin
+:Edwin rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Elaine
+:Elaine rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Elijah
+:Elijah rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Elizabeth
+:Elizabeth rdf:type owl:NamedIndividual ,
+                    :Billing ,
+                    :MedicalAssistants ,
+                    :Nurse ,
+                    :NursePractitioner ,
+                    :Patient ,
+                    :Pharmacist ,
+                    :SeniorDoctor ,
+                    :Technician ;
+           :isCertifiedBy :GYN ;
+           :providesTreatment :Lynda ;
+           :specializesIn :Gynaecologist ;
+           :worksIn :Maternity ;
+           :canModifyAllergies "true"^^xsd:boolean ;
+           :canModifyDiagnoses "true"^^xsd:boolean ;
+           :canModifyDoctorNotes "true"^^xsd:boolean ;
+           :canModifyLabResults "true"^^xsd:boolean ;
+           :canModifyMedication "true"^^xsd:boolean ;
+           :canModifyPrescription "true"^^xsd:boolean ;
+           :canReadImmunizationDates "true"^^xsd:boolean ;
+           :canReadVitalStats "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ellen
+:Ellen rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#EmergencyServices
+:EmergencyServices rdf:type owl:NamedIndividual ,
+                            :Billing ,
+                            :MedicalAssistants ,
+                            :Nurse ,
+                            :NursePractitioner ,
+                            :Pharmacist ,
+                            :Technician ;
+                   :isCertifiedBy :CPT ,
+                                  :EMT-B .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Emily
+:Emily rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Emma
+:Emma rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Eric
+:Eric rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Erica
+:Erica rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Erik
+:Erik rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Erika
+:Erika rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Erin
+:Erin rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ernest
+:Ernest rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ethan
+:Ethan rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Eugene
+:Eugene rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Evan
+:Evan rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Evelyn
+:Evelyn rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#FACC
+:FACC rdf:type owl:NamedIndividual ,
+               :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Faith
+:Faith rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Felicia
+:Felicia rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Frances
+:Frances rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Francis
+:Francis rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Francisco
+:Francisco rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Frank
+:Frank rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Franklin
+:Franklin rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Fred
+:Fred rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#FrontDesk
+:FrontDesk rdf:type owl:NamedIndividual ,
+                    :Billing ,
+                    :MedicalAssistants ,
+                    :Nurse ,
+                    :NursePractitioner ,
+                    :Pharmacist ,
+                    :Technician ;
+           :isCertifiedBy :CCMA ,
+                          :CMAA .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#GYN
+:GYN rdf:type owl:NamedIndividual ,
+              :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gabriel
+:Gabriel rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gabriella
+:Gabriella rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gabrielle
+:Gabrielle rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gail
+:Gail rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Garrett
+:Garrett rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gary
+:Gary rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gene
+:Gene rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Geoffrey
+:Geoffrey rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#George
+:George rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gerald
+:Gerald rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gina
+:Gina rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Glen
+:Glen rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Glenda
+:Glenda rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Glenn
+:Glenn rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gloria
+:Gloria rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gordon
+:Gordon rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Grace
+:Grace rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Grant
+:Grant rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Greg
+:Greg rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gregg
+:Gregg rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gregory
+:Gregory rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Gynaecologist
+:Gynaecologist rdf:type owl:NamedIndividual ,
+                        :Specialization .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Hailey
+:Hailey rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Haley
+:Haley rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Hannah
+:Hannah rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Harold
+:Harold rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Harry
+:Harry rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Hayden
+:Hayden rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Heather
+:Heather rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Hector
+:Hector rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Heidi
+:Heidi rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Helen
+:Helen rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Henry
+:Henry rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Herbert
+:Herbert rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Holly
+:Holly rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Hunter
+:Hunter rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ian
+:Ian rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#ImmunizationDates
+:ImmunizationDates rdf:type owl:NamedIndividual ,
+                            :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Isaac
+:Isaac rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Isabel
+:Isabel rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Isaiah
+:Isaiah rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jack
+:Jack rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jackie
+:Jackie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jacob
+:Jacob rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jacqueline
+:Jacqueline rdf:type owl:NamedIndividual ,
+                     :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jade
+:Jade rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jaime
+:Jaime rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jake
+:Jake rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#James
+:James rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jamie
+:Jamie rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jane
+:Jane rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Janet
+:Janet rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Janice
+:Janice rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jared
+:Jared rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jasmine
+:Jasmine rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jason
+:Jason rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Javier
+:Javier rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jay
+:Jay rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jean
+:Jean rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jeanette
+:Jeanette rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jeanne
+:Jeanne rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jeff
+:Jeff rdf:type owl:NamedIndividual ,
+               :JuniorDoctor ,
+               :Nurse ,
+               :Patient ;
+      :reportsTo :Richard ;
+      :canReadDoctorNotes "true"^^xsd:boolean ;
+      :canReadImmunizationDates "true"^^xsd:boolean ;
+      :canReadLabResults "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jeffery
+:Jeffery rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jeffrey
+:Jeffrey rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jenna
+:Jenna rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jennifer
+:Jennifer rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jenny
+:Jenny rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jeremiah
+:Jeremiah rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jeremy
+:Jeremy rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jermaine
+:Jermaine rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jerome
+:Jerome rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jerry
+:Jerry rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jesse
+:Jesse rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jessica
+:Jessica rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jesus
+:Jesus rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jill
+:Jill rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jillian
+:Jillian rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jim
+:Jim rdf:type owl:NamedIndividual ,
+              :Billing ,
+              :SeniorDoctor ;
+     :worksWith :MC1 ;
+     :canModifyBillingInfo "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jimmy
+:Jimmy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joan
+:Joan rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joann
+:Joann rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joanna
+:Joanna rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joanne
+:Joanne rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jocelyn
+:Jocelyn rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jodi
+:Jodi rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jody
+:Jody rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joe
+:Joe rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joel
+:Joel rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#John
+:John rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Johnathan
+:Johnathan rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Johnny
+:Johnny rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jon
+:Jon rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jonathan
+:Jonathan rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jonathon
+:Jonathon rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jordan
+:Jordan rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jorge
+:Jorge rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Jose
+:Jose rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joseph
+:Joseph rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joshua
+:Joshua rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joy
+:Joy rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Joyce
+:Joyce rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Juan
+:Juan rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Judy
+:Judy rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Julia
+:Julia rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Julian
+:Julian rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Julie
+:Julie rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Justin
+:Justin rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kaitlin
+:Kaitlin rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kaitlyn
+:Kaitlyn rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kara
+:Kara rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Karen
+:Karen rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kari
+:Kari rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Karina
+:Karina rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Karl
+:Karl rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Karla
+:Karla rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Katelyn
+:Katelyn rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Katherine
+:Katherine rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kathleen
+:Kathleen rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kathryn
+:Kathryn rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kathy
+:Kathy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Katie
+:Katie rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Katrina
+:Katrina rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kayla
+:Kayla rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kaylee
+:Kaylee rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Keith
+:Keith rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kelli
+:Kelli rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kellie
+:Kellie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kelly
+:Kelly rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kelsey
+:Kelsey rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kendra
+:Kendra rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kenneth
+:Kenneth rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kerry
+:Kerry rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kevin
+:Kevin rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kim
+:Kim rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kimberly
+:Kimberly rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kirk
+:Kirk rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kirsten
+:Kirsten rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Krista
+:Krista rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kristen
+:Kristen rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kristi
+:Kristi rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kristin
+:Kristin rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kristina
+:Kristina rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kristine
+:Kristine rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kristopher
+:Kristopher rdf:type owl:NamedIndividual ,
+                     :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kristy
+:Kristy rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Krystal
+:Krystal rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kurt
+:Kurt rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Kyle
+:Kyle rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#LASIKSurgicalMachine
+:LASIKSurgicalMachine rdf:type owl:NamedIndividual ,
+                               :Machinery ;
+                      :isUsedBy :LabTechnician .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#LPN_LVN
+:LPN_LVN rdf:type owl:NamedIndividual ,
+                  :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#LabResults
+:LabResults rdf:type owl:NamedIndividual ,
+                     :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#LabTechnician
+:LabTechnician rdf:type owl:NamedIndividual ,
+                        :Billing ,
+                        :MedicalAssistants ,
+                        :Nurse ,
+                        :NursePractitioner ,
+                        :Pharmacist ,
+                        :SeniorDoctor ,
+                        :Technician ;
+               :isCertifiedBy :CET ;
+               :performsTeston :Jim ,
+                               :Lynda ,
+                               :Mark ;
+               :worksIn :DiagnosticImaging ;
+               :canModifyLabResults "true"^^xsd:boolean ;
+               :canReadDiagnoses "true"^^xsd:boolean ;
+               :canReadVitalStats "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lacey
+:Lacey rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lalita
+:Lalita rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lance
+:Lance rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Larry
+:Larry rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Laura
+:Laura rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lauren
+:Lauren rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Laurie
+:Laurie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lawrence
+:Lawrence rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Leah
+:Leah rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lee
+:Lee rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Leon
+:Leon rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Leonard
+:Leonard rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Leroy
+:Leroy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Leslie
+:Leslie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Linda
+:Linda rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lindsay
+:Lindsay rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lindsey
+:Lindsey rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lisa
+:Lisa rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Loretta
+:Loretta rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lori
+:Lori rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lorraine
+:Lorraine rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Louis
+:Louis rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lucas
+:Lucas rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Luis
+:Luis rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Luke
+:Luke rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lynda
+:Lynda rdf:type owl:NamedIndividual ,
+                :Patient ;
+       :getsTreatedby :Elizabeth ,
+                      :Paul .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Lynn
+:Lynn rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#MC1
+:MC1 rdf:type owl:NamedIndividual ,
+              :MedicalInsuranceCompany .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#MD
+:MD rdf:type owl:NamedIndividual ,
+             :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#MRIMachine
+:MRIMachine rdf:type owl:NamedIndividual ,
+                     :Machinery ;
+            :isUsedBy :LabTechnician .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mackenzie
+:Mackenzie rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Madeline
+:Madeline rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Madison
+:Madison rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Malik
+:Malik rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mallory
+:Mallory rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mandy
+:Mandy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Manuel
+:Manuel rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Marc
+:Marc rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Marcia
+:Marcia rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Marcus
+:Marcus rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Margaret
+:Margaret rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Maria
+:Maria rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mariah
+:Mariah rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Marie
+:Marie rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Marilyn
+:Marilyn rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mario
+:Mario rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Marissa
+:Marissa rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mark
+:Mark rdf:type owl:NamedIndividual ,
+               :Patient ;
+      :getsTreatedby :Thomas .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Martha
+:Martha rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Martin
+:Martin rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mary
+:Mary rdf:type owl:NamedIndividual ,
+               :JuniorDoctor ,
+               :Patient ;
+      :canReadDoctorNotes "true"^^xsd:boolean ;
+      :canReadImmunizationDates "true"^^xsd:boolean ;
+      :canReadLabResults "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mason
+:Mason rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Maternity
+:Maternity rdf:type owl:NamedIndividual ,
+                    :HospitalWard .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mathew
+:Mathew rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Matthew
+:Matthew rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Maureen
+:Maureen rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Maurice
+:Maurice rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mckenzie
+:Mckenzie rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Meagan
+:Meagan rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Medication
+:Medication rdf:type owl:NamedIndividual ,
+                     :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Megan
+:Megan rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Meghan
+:Meghan rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Melanie
+:Melanie rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Melinda
+:Melinda rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Melissa
+:Melissa rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mercedes
+:Mercedes rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Meredith
+:Meredith rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Michael
+:Michael rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Michaela
+:Michaela rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Micheal
+:Micheal rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Michele
+:Michele rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Michelle
+:Michelle rdf:type owl:NamedIndividual ,
+                   :Billing ,
+                   :JuniorDoctor ,
+                   :MedicalAssistants ,
+                   :Nurse ,
+                   :NursePractitioner ,
+                   :Patient ,
+                   :Pharmacist ,
+                   :SeniorDoctor ,
+                   :Technician ;
+          :isCertifiedBy :MD ;
+          :reportsTo :Elizabeth ;
+          :worksIn :Maternity ;
+          :canModifyAllergies "true"^^xsd:boolean ;
+          :canReadDiagnoses "true"^^xsd:boolean ;
+          :canReadMedication "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Miguel
+:Miguel rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mikayla
+:Mikayla rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mike
+:Mike rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mindy
+:Mindy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Miranda
+:Miranda rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Miss
+:Miss rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Misty
+:Misty rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mitchell
+:Mitchell rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Molly
+:Molly rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Monica
+:Monica rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Monique
+:Monique rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Morgan
+:Morgan rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mr.
+<http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mr.> rdf:type owl:NamedIndividual ,
+                                                                                           :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mrs.
+<http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Mrs.> rdf:type owl:NamedIndividual ,
+                                                                                            :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ms.
+<http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ms.> rdf:type owl:NamedIndividual ,
+                                                                                           :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#NPS
+:NPS rdf:type owl:NamedIndividual ,
+              :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#NRP
+:NRP rdf:type owl:NamedIndividual ,
+              :Certification .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Nancy
+:Nancy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Natalie
+:Natalie rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Natasha
+:Natasha rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Nathan
+:Nathan rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Nathaniel
+:Nathaniel rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Nicholas
+:Nicholas rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Nicole
+:Nicole rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Nina
+:Nina rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Noah
+:Noah rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Norma
+:Norma rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Norman
+:Norman rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Olivia
+:Olivia rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Omar
+:Omar rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Oncology
+:Oncology rdf:type owl:NamedIndividual ,
+                   :HospitalWard .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Opthalmologist
+:Opthalmologist rdf:type owl:NamedIndividual ,
+                         :Specialization .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Opthalmology
+:Opthalmology rdf:type owl:NamedIndividual ,
+                       :HospitalWard .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Oscar
+:Oscar rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Paige
+:Paige rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Pam
+:Pam rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Pamela
+:Pamela rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Patricia
+:Patricia rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Patrick
+:Patrick rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Patty
+:Patty rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Paul
+:Paul rdf:type owl:NamedIndividual ,
+               :Billing ,
+               :MedicalAssistants ,
+               :Nurse ,
+               :NursePractitioner ,
+               :Patient ,
+               :Pharmacist ,
+               :SeniorDoctor ,
+               :Technician ;
+      :isCertifiedBy :DNP ,
+                     :LPN_LVN ,
+                     :NPS ;
+      :providesTreatment :Lynda ;
+      :specializesIn :Gynaecologist ;
+      :worksIn :Maternity ;
+      :canModifyDiagnoses "true"^^xsd:boolean ;
+      :canModifyDoctorNotes "true"^^xsd:boolean ;
+      :canModifyMedication "true"^^xsd:boolean ;
+      :canModifyPrescription "true"^^xsd:boolean ;
+      :canReadImmunizationDates "true"^^xsd:boolean ;
+      :canReadLabResults "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Paula
+:Paula rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Pediatric
+:Pediatric rdf:type owl:NamedIndividual ,
+                    :HospitalWard .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Pediatrician
+:Pediatrician rdf:type owl:NamedIndividual ,
+                       :Specialization .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Pedro
+:Pedro rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Peggy
+:Peggy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Penny
+:Penny rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Perry
+:Perry rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Peter
+:Peter rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Pharm1
+:Pharm1 rdf:type owl:NamedIndividual ,
+                 :Billing ,
+                 :MedicalAssistants ,
+                 :Nurse ,
+                 :NursePractitioner ,
+                 :Pharmacist ,
+                 :Technician ;
+        :isCertifiedBy :CPhT .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Philip
+:Philip rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Phillip
+:Phillip rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Phyllis
+:Phyllis rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Prescription
+:Prescription rdf:type owl:NamedIndividual ,
+                       :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rachael
+:Rachael rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rachel
+:Rachel rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ralph
+:Ralph rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Randall
+:Randall rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Randy
+:Randy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Raven
+:Raven rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ray
+:Ray rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Raymond
+:Raymond rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rebecca
+:Rebecca rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rebekah
+:Rebekah rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Regina
+:Regina rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Reginald
+:Reginald rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Renee
+:Renee rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rhonda
+:Rhonda rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ricardo
+:Ricardo rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Richard
+:Richard rdf:type owl:NamedIndividual ,
+                  :Billing ,
+                  :MedicalAssistants ,
+                  :Nurse ,
+                  :NursePractitioner ,
+                  :Patient ,
+                  :Pharmacist ,
+                  :SeniorDoctor ,
+                  :Technician ;
+         :isCertifiedBy :FACC ,
+                        :MD ;
+         :providesTreatment :Jim ;
+         :specializesIn :Cardiologist ;
+         :worksIn :Cardiac ;
+         :canModifyDiagnoses "true"^^xsd:boolean ;
+         :canModifyDoctorNotes "true"^^xsd:boolean ;
+         :canModifyMedication "true"^^xsd:boolean ;
+         :canModifyPrescription "true"^^xsd:boolean ;
+         :canReadImmunizationDates "true"^^xsd:boolean ;
+         :canReadLabResults "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rick
+:Rick rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rickey
+:Rickey rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ricky
+:Ricky rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Riley
+:Riley rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rita
+:Rita rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Robert
+:Robert rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Roberto
+:Roberto rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Robin
+:Robin rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rodney
+:Rodney rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Roger
+:Roger rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ronald
+:Ronald rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ronnie
+:Ronnie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Rose
+:Rose rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ross
+:Ross rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Roy
+:Roy rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ruben
+:Ruben rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Russell
+:Russell rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ruth
+:Ruth rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Ryan
+:Ryan rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sabrina
+:Sabrina rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sally
+:Sally rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Samantha
+:Samantha rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Samuel
+:Samuel rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sandra
+:Sandra rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sandy
+:Sandy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sara
+:Sara rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sarah
+:Sarah rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Savannah
+:Savannah rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Scott
+:Scott rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sean
+:Sean rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Selena
+:Selena rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sergio
+:Sergio rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Seth
+:Seth rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shane
+:Shane rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shannon
+:Shannon rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sharon
+:Sharon rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shaun
+:Shaun rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shawn
+:Shawn rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shawna
+:Shawna rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sheila
+:Sheila rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shelby
+:Shelby rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shelia
+:Shelia rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shelley
+:Shelley rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shelly
+:Shelly rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sheri
+:Sheri rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sherri
+:Sherri rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sherry
+:Sherry rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Shirley
+:Shirley rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sierra
+:Sierra rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sonia
+:Sonia rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sophia
+:Sophia rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Spencer
+:Spencer rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Stacey
+:Stacey rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Stacy
+:Stacy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Stanley
+:Stanley rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Stefanie
+:Stefanie rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Stephanie
+:Stephanie rdf:type owl:NamedIndividual ,
+                    :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Stephen
+:Stephen rdf:type owl:NamedIndividual ,
+                  :Billing ,
+                  :MedicalAssistants ,
+                  :Nurse ,
+                  :NursePractitioner ,
+                  :Patient ,
+                  :Pharmacist ,
+                  :Technician ;
+         :isCertifiedBy :NPS .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Steve
+:Steve rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Steven
+:Steven rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Stuart
+:Stuart rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Summer
+:Summer rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Susan
+:Susan rdf:type owl:NamedIndividual ,
+                :Billing ,
+                :MedicalAssistants ,
+                :Nurse ,
+                :NursePractitioner ,
+                :Patient ,
+                :Pharmacist ,
+                :Technician ;
+       :isCertifiedBy :DNP ,
+                      :LPN_LVN ,
+                      :NRP ;
+       :specializesIn :Pediatrician ;
+       :worksIn :Pediatric .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Suzanne
+:Suzanne rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sydney
+:Sydney rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Sylvia
+:Sylvia rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tamara
+:Tamara rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tammy
+:Tammy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tanya
+:Tanya rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tara
+:Tara rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tasha
+:Tasha rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Taylor
+:Taylor rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Teresa
+:Teresa rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Terrance
+:Terrance rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Terrence
+:Terrence rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Terri
+:Terri rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Terry
+:Terry rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Theodore
+:Theodore rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Theresa
+:Theresa rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Thomas
+:Thomas rdf:type owl:NamedIndividual ,
+                 :Billing ,
+                 :MedicalAssistants ,
+                 :Nurse ,
+                 :NursePractitioner ,
+                 :Patient ,
+                 :Pharmacist ,
+                 :SeniorDoctor ,
+                 :Technician ;
+        :isCertifiedBy :MD ;
+        :providesTreatment :Mark ;
+        :specializesIn :Opthalmologist ;
+        :worksIn :Opthalmology ;
+        :canModifyDiagnoses "true"^^xsd:boolean ;
+        :canModifyDoctorNotes "true"^^xsd:boolean ;
+        :canModifyMedication "true"^^xsd:boolean ;
+        :canModifyPrescription "true"^^xsd:boolean ;
+        :canReadImmunizationDates "true"^^xsd:boolean ;
+        :canReadLabResults "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tiffany
+:Tiffany rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tim
+:Tim rdf:type owl:NamedIndividual ,
+              :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Timothy
+:Timothy rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tina
+:Tina rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Todd
+:Todd rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Toni
+:Toni rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tony
+:Tony rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tonya
+:Tonya rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tracey
+:Tracey rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tracie
+:Tracie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tracy
+:Tracy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Travis
+:Travis rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Trevor
+:Trevor rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tricia
+:Tricia rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tristan
+:Tristan rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Troy
+:Troy rdf:type owl:NamedIndividual ,
+               :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Tyler
+:Tyler rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Valerie
+:Valerie rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Vanessa
+:Vanessa rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Vernon
+:Vernon rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Veronica
+:Veronica rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Vicki
+:Vicki rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Vickie
+:Vickie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Victor
+:Victor rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Victoria
+:Victoria rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Vincent
+:Vincent rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Virginia
+:Virginia rdf:type owl:NamedIndividual ,
+                   :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#VitalStats
+:VitalStats rdf:type owl:NamedIndividual ,
+                     :EHR .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Walter
+:Walter rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Wanda
+:Wanda rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Wayne
+:Wayne rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Wendy
+:Wendy rdf:type owl:NamedIndividual ,
+                :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Wesley
+:Wesley rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Whitney
+:Whitney rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#William
+:William rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Willie
+:Willie rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#XrayMachine
+:XrayMachine rdf:type owl:NamedIndividual ,
+                      :Machinery ;
+             :isUsedBy :LabTechnician .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Yesenia
+:Yesenia rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Yolanda
+:Yolanda rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Yvette
+:Yvette rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Yvonne
+:Yvonne rdf:type owl:NamedIndividual ,
+                 :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Zachary
+:Zachary rdf:type owl:NamedIndividual ,
+                  :Patient .
+
+
+###  http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#123
+<http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#123> rdf:type owl:NamedIndividual ,
+                                                                                           :UID .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:bp rdf:type swrl:Variable .
+
+:p rdf:type swrl:Variable .
+
+:mc rdf:type swrl:Variable .
+
+:jd rdf:type swrl:Variable .
+
+:hw rdf:type swrl:Variable .
+
+:sd rdf:type swrl:Variable .
+
+:c rdf:type swrl:Variable .
+
+:np rdf:type swrl:Variable .
+
+:sp rdf:type swrl:Variable .
+
+:se rdf:type swrl:Variable .
+
+:t rdf:type swrl:Variable .
+
+:m rdf:type swrl:Variable .
+
+[ swrl2:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S4"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Billing ;
+                           swrl:argument1 :bp
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate :Patient ;
+                                      swrl:argument1 :p
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :worksWith ;
+                                                 swrl:argument1 :bp ;
+                                                 swrl:argument2 :mc
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:ClassAtom ;
+                                                            swrl:classPredicate :MedicalInsuranceCompany ;
+                                                            swrl:argument1 :mc
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                       swrl:classPredicate :EHR ;
+                                                                       swrl:argument1 :BillingInfo
+                                                                     ] ;
+                                                           rdf:rest rdf:nil
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate :canModifyBillingInfo ;
+                           swrl:argument1 :bp ;
+                           swrl:argument2 "true"^^xsd:boolean
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrl2:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S6"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :performsTeston ;
+                           swrl:argument1 :t ;
+                           swrl:argument2 :p
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate :EHR ;
+                                      swrl:argument1 :Diagnoses
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:ClassAtom ;
+                                                 swrl:classPredicate :Machinery ;
+                                                 swrl:argument1 :m
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:ClassAtom ;
+                                                            swrl:classPredicate :Patient ;
+                                                            swrl:argument1 :p
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                       swrl:classPredicate :Technician ;
+                                                                       swrl:argument1 :t
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                  swrl:propertyPredicate :isUsedBy ;
+                                                                                  swrl:argument1 :m ;
+                                                                                  swrl:argument2 :t
+                                                                                ] ;
+                                                                      rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                 rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                             swrl:classPredicate :EHR ;
+                                                                                             swrl:argument1 :VitalStats
+                                                                                           ] ;
+                                                                                 rdf:rest rdf:nil
+                                                                               ]
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate :canModifyLabResults ;
+                           swrl:argument1 :t ;
+                           swrl:argument2 "true"^^xsd:boolean
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :canReadVitalStats ;
+                                      swrl:argument1 :t ;
+                                      swrl:argument2 "true"^^xsd:boolean
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :canReadDiagnoses ;
+                                                 swrl:argument1 :t ;
+                                                 swrl:argument2 "true"^^xsd:boolean
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ]
+ ] .
+
+[ swrl2:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "Rule2"^^xsd:string ;
+   rdfs:label "S2"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :worksIn ;
+                           swrl:argument1 :jd ;
+                           swrl:argument2 :hw
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :canModifyMedication ;
+                                      swrl:argument1 :sd ;
+                                      swrl:argument2 "true"^^xsd:boolean
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:ClassAtom ;
+                                                 swrl:classPredicate :EHR ;
+                                                 swrl:argument1 :Medication
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                            swrl:propertyPredicate :worksIn ;
+                                                            swrl:argument1 :sd ;
+                                                            swrl:argument2 :hw
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                       swrl:propertyPredicate :canModifyAllergies ;
+                                                                       swrl:argument1 :sd ;
+                                                                       swrl:argument2 "true"^^xsd:boolean
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                  swrl:propertyPredicate :reportsTo ;
+                                                                                  swrl:argument1 :jd ;
+                                                                                  swrl:argument2 :sd
+                                                                                ] ;
+                                                                      rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                 rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                             swrl:classPredicate :SeniorDoctor ;
+                                                                                             swrl:argument1 :sd
+                                                                                           ] ;
+                                                                                 rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                            rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                        swrl:propertyPredicate :isCertifiedBy ;
+                                                                                                        swrl:argument1 :jd ;
+                                                                                                        swrl:argument2 :c
+                                                                                                      ] ;
+                                                                                            rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                       rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                   swrl:classPredicate :EHR ;
+                                                                                                                   swrl:argument1 :Diagnoses
+                                                                                                                 ] ;
+                                                                                                       rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                  rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                              swrl:classPredicate :JuniorDoctor ;
+                                                                                                                              swrl:argument1 :jd
+                                                                                                                            ] ;
+                                                                                                                  rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                             rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                                         swrl:classPredicate :EHR ;
+                                                                                                                                         swrl:argument1 :Allergies
+                                                                                                                                       ] ;
+                                                                                                                             rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                        rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                                                                                                    swrl:propertyPredicate :canModifyDiagnoses ;
+                                                                                                                                                    swrl:argument1 :sd ;
+                                                                                                                                                    swrl:argument2 "true"^^xsd:boolean
+                                                                                                                                                  ] ;
+                                                                                                                                        rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                                   rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                                                               swrl:classPredicate :Certification ;
+                                                                                                                                                               swrl:argument1 :c
+                                                                                                                                                             ] ;
+                                                                                                                                                   rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                                              rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                                                                          swrl:classPredicate :HospitalWard ;
+                                                                                                                                                                          swrl:argument1 :hw
+                                                                                                                                                                        ] ;
+                                                                                                                                                              rdf:rest rdf:nil
+                                                                                                                                                            ]
+                                                                                                                                                 ]
+                                                                                                                                      ]
+                                                                                                                           ]
+                                                                                                                ]
+                                                                                                     ]
+                                                                                          ]
+                                                                               ]
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate :canReadMedication ;
+                           swrl:argument1 :jd ;
+                           swrl:argument2 "true"^^xsd:boolean
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :canReadDiagnoses ;
+                                      swrl:argument1 :jd ;
+                                      swrl:argument2 "true"^^xsd:boolean
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :canModifyAllergies ;
+                                                 swrl:argument1 :jd ;
+                                                 swrl:argument2 "true"^^xsd:boolean
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ]
+ ] .
+
+[ swrl2:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S3"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :EHR ;
+                           swrl:argument1 :Medication
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate :NursePractitioner ;
+                                      swrl:argument1 :np
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :specializesIn ;
+                                                 swrl:argument1 :np ;
+                                                 swrl:argument2 :sp
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:ClassAtom ;
+                                                            swrl:classPredicate :EHR ;
+                                                            swrl:argument1 :Prescription
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                       swrl:classPredicate :EHR ;
+                                                                       swrl:argument1 :ImmunizationDates
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                  swrl:classPredicate :EHR ;
+                                                                                  swrl:argument1 :Diagnoses
+                                                                                ] ;
+                                                                      rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                 rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                             swrl:classPredicate :Patient ;
+                                                                                             swrl:argument1 :p
+                                                                                           ] ;
+                                                                                 rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                            rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                        swrl:classPredicate :EHR ;
+                                                                                                        swrl:argument1 :DoctorNotes
+                                                                                                      ] ;
+                                                                                            rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                       rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                   swrl:classPredicate :EHR ;
+                                                                                                                   swrl:argument1 :LabResults
+                                                                                                                 ] ;
+                                                                                                       rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                  rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                              swrl:classPredicate :Certification ;
+                                                                                                                              swrl:argument1 :c
+                                                                                                                            ] ;
+                                                                                                                  rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                             rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                                                         swrl:propertyPredicate :isCertifiedBy ;
+                                                                                                                                         swrl:argument1 :np ;
+                                                                                                                                         swrl:argument2 :c
+                                                                                                                                       ] ;
+                                                                                                                             rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                        rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                                                    swrl:classPredicate :HospitalWard ;
+                                                                                                                                                    swrl:argument1 :hw
+                                                                                                                                                  ] ;
+                                                                                                                                        rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                                   rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                                                                               swrl:propertyPredicate :providesTreatment ;
+                                                                                                                                                               swrl:argument1 :np ;
+                                                                                                                                                               swrl:argument2 :p
+                                                                                                                                                             ] ;
+                                                                                                                                                   rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                                              rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                                                                                          swrl:propertyPredicate :worksIn ;
+                                                                                                                                                                          swrl:argument1 :np ;
+                                                                                                                                                                          swrl:argument2 :hw
+                                                                                                                                                                        ] ;
+                                                                                                                                                              rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                                                         rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                                                                                     swrl:classPredicate :Specialization ;
+                                                                                                                                                                                     swrl:argument1 :sp
+                                                                                                                                                                                   ] ;
+                                                                                                                                                                         rdf:rest rdf:nil
+                                                                                                                                                                       ]
+                                                                                                                                                            ]
+                                                                                                                                                 ]
+                                                                                                                                      ]
+                                                                                                                           ]
+                                                                                                                ]
+                                                                                                     ]
+                                                                                          ]
+                                                                               ]
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate :canModifyMedication ;
+                           swrl:argument1 :np ;
+                           swrl:argument2 "true"^^xsd:boolean
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :canModifyDoctorNotes ;
+                                      swrl:argument1 :np ;
+                                      swrl:argument2 "true"^^xsd:boolean
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :canReadImmunizationDates ;
+                                                 swrl:argument1 :np ;
+                                                 swrl:argument2 "true"^^xsd:boolean
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                            swrl:propertyPredicate :canReadLabResults ;
+                                                            swrl:argument1 :np ;
+                                                            swrl:argument2 "true"^^xsd:boolean
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                       swrl:propertyPredicate :canModifyPrescription ;
+                                                                       swrl:argument1 :np ;
+                                                                       swrl:argument2 "true"^^xsd:boolean
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                                  swrl:propertyPredicate :canModifyDiagnoses ;
+                                                                                  swrl:argument1 :np ;
+                                                                                  swrl:argument2 "true"^^xsd:boolean
+                                                                                ] ;
+                                                                      rdf:rest rdf:nil
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ]
+ ] .
+
+[ swrl2:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "Rule1"^^xsd:string ;
+   rdfs:label "S1"^^xsd:string ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :EHR ;
+                           swrl:argument1 :Medication
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :specializesIn ;
+                                      swrl:argument1 :se ;
+                                      swrl:argument2 :Gynaecologist
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:ClassAtom ;
+                                                 swrl:classPredicate :EHR ;
+                                                 swrl:argument1 :Prescription
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:ClassAtom ;
+                                                            swrl:classPredicate :EHR ;
+                                                            swrl:argument1 :VitalStats
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                       swrl:propertyPredicate :providesTreatment ;
+                                                                       swrl:argument1 :se ;
+                                                                       swrl:argument2 :p
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                  swrl:classPredicate :SeniorDoctor ;
+                                                                                  swrl:argument1 :se
+                                                                                ] ;
+                                                                      rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                 rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                             swrl:classPredicate :EHR ;
+                                                                                             swrl:argument1 :Diagnoses
+                                                                                           ] ;
+                                                                                 rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                            rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                        swrl:classPredicate :Patient ;
+                                                                                                        swrl:argument1 :p
+                                                                                                      ] ;
+                                                                                            rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                       rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                   swrl:classPredicate :EHR ;
+                                                                                                                   swrl:argument1 :Allergies
+                                                                                                                 ] ;
+                                                                                                       rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                  rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                                              swrl:propertyPredicate :isCertifiedBy ;
+                                                                                                                              swrl:argument1 :se ;
+                                                                                                                              swrl:argument2 :GYN
+                                                                                                                            ] ;
+                                                                                                                  rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                             rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                                         swrl:classPredicate :EHR ;
+                                                                                                                                         swrl:argument1 :DoctorNotes
+                                                                                                                                       ] ;
+                                                                                                                             rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                        rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                                                                                                    swrl:classPredicate :EHR ;
+                                                                                                                                                    swrl:argument1 :LabResults
+                                                                                                                                                  ] ;
+                                                                                                                                        rdf:rest [ rdf:type swrl:AtomList ;
+                                                                                                                                                   rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                                                                                                                               swrl:propertyPredicate :worksIn ;
+                                                                                                                                                               swrl:argument1 :se ;
+                                                                                                                                                               swrl:argument2 :Maternity
+                                                                                                                                                             ] ;
+                                                                                                                                                   rdf:rest rdf:nil
+                                                                                                                                                 ]
+                                                                                                                                      ]
+                                                                                                                           ]
+                                                                                                                ]
+                                                                                                     ]
+                                                                                          ]
+                                                                               ]
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate :canModifyLabResults ;
+                           swrl:argument1 :se ;
+                           swrl:argument2 "true"^^xsd:boolean
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :canModifyPrescription ;
+                                      swrl:argument1 :se ;
+                                      swrl:argument2 "true"^^xsd:boolean
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :canReadVitalStats ;
+                                                 swrl:argument1 :se ;
+                                                 swrl:argument2 "true"^^xsd:boolean
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                            swrl:propertyPredicate :canModifyMedication ;
+                                                            swrl:argument1 :se ;
+                                                            swrl:argument2 "true"^^xsd:boolean
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                       swrl:propertyPredicate :canModifyAllergies ;
+                                                                       swrl:argument1 :se ;
+                                                                       swrl:argument2 "true"^^xsd:boolean
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                                  swrl:propertyPredicate :canModifyDiagnoses ;
+                                                                                  swrl:argument1 :se ;
+                                                                                  swrl:argument2 "true"^^xsd:boolean
+                                                                                ] ;
+                                                                      rdf:rest rdf:nil
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

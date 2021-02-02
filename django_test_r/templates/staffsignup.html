@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EHR Staff Signup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color:#000000;
+      height: 100%;
+    }
+
+    #imageContent {
+      position: fixed;
+      bottom : 10px;
+      left : 10px;
+      /*margin-top: -40px*/
+    }
+    
+    #umbcimageContent {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+    }
+    #mainContent {
+    
+    height: 590px;
+	right: 10px;
+    
+}
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #000000;
+      color: white;
+      padding: 10px;
+	
+    }
+h1, h3 {
+    font-family: 'Proxima Nova';
+}
+.bg-1 {
+    background-color: #FFFFFF; /*black*/
+    /*color: #0099ff;*/
+    color: #000000;
+}
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+      <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li  class="active"><a href="staffsignup"><span class="glyphicon glyphicon-info-sign"></span> Staff Sign Up</a></li>
+        <li><a href="stafflogin"><span class="glyphicon glyphicon-log-in"></span> Staff Sign In</a></li>
+        <li><a href="patientsignup"><span class="glyphicon glyphicon-info-sign"></span> Patient Sign Up</a></li>
+        <li><a href="patientlogin"><span class="glyphicon glyphicon-log-in"></span> Patient Sign In</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> About</a></li>
+        
+      </ul>   
+    </div>
+
+  </div>
+</nav>
+
+
+
+<div class="container" id="mainContent">
+  <h2>  </h2>
+  <form action="/staffsignup_view/" method="get" class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="uid">User ID:</label>
+      <div class="col-sm-10">
+        <input type="text" oninput = "auth()" class="form-control" name="uid" placeholder="Enter User ID">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="username">User Name:</label>
+      <div class="col-sm-10">
+        <input type="text" oninput = "auth()" class="form-control" name="username" placeholder="Enter User Name">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="password">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" name="password" placeholder="Enter password">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="role">Role:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" name="role" placeholder="Enter User Role">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="certification">Certification:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" name="certification" placeholder="Enter User Certification">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="specialization">Specialization:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" name="specialization" placeholder="Enter User Specialization">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="hward">Hospital Wing:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" name="hward" placeholder="Enter Hospital Wing">
+      </div>
+    </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+       <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% load static %}
+<img src="{% static "articles/EHR_logo.jpeg" %}" alt="ehrlogo", width="120" height="100" id = "imageContent">
+
+{% load static %}
+<img src="{% static "articles/UMBC_logo.png" %}" alt="umbclogo", width="100" height="100" id = "umbcimageContent">

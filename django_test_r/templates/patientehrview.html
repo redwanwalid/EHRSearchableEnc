@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Patient EHR Details (Patient View)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    .myNavbar {
+    color: white;
+}
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color:#000000;
+      height: 100%;
+    }
+
+    #imageContent {
+      position: fixed;
+      bottom : 10px;
+      left : 10px;
+      /*margin-top: -40px*/
+    }
+    
+    #umbcimageContent {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+    }
+    #mainContent {
+    
+    height: 590px;
+  right: 10px;
+    
+}
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #000000;
+      color: white;
+      padding: 10px;
+  
+    }
+h1, h3 {
+    font-family: 'Proxima Nova';
+}
+
+#icon{
+   position: absolute;
+  /* Adjust these values accordingly */
+  top: 1px;
+  left: 1155px;
+  /*float: right;*/
+}
+
+#box{
+  position: absolute;
+  left: 1100px
+}
+
+#myicon{
+   position: absolute;
+  /* Adjust these values accordingly */
+  top: 1px;
+  left: 510px;
+  /*float: right;*/
+}
+/*#h1
+{
+color:#00bfff;
+
+}*/
+.bg-1 {
+    background-color: #FFFFFF; /*black*/
+    /*color: #0099ff;*/
+    color: #000000;
+}
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" id="myNavbar" >
+
+      <li style="font-size:20px;float:right;color: white"> <span class="glyphicon glyphicon-user" style="font-size:20px;color:white;" > <h5> <p> Patient : {{ patientName }} </p> </h5></span></li>
+
+      <!-- <li style="font-size:20px;float:right;color:white;" id = "icon"> <h5> <p> Patient : {{ patientName }}</p> <p> Doctor : {{ doctorName }} </p> </h5> </li> -->
+        
+      </ul>
+        <p> <h2 style="color: white" id="myicon"> EHR Details </h2> </p>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container" id="h1">
+  <!-- <h2>Patient : {{ patientName }} </h2> -->
+  <!-- <p> <h3> EHR Details </h3> </p> -->
+  <form role="form" action="/home/" method="get">
+  <div class="panel-group"  id="accordion" style="width: 110%;height: 40%">
+  <!-- <div class="row"> -->
+    <div class="row">
+    {% for af in allowedFields %}
+    <!-- <div class="column"> -->
+      <div class="col-sm-4">
+    <div class="panel panel-default" style="width: 85%;height: 100%">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+        <!-- <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> -->
+        <h4> <b> {{ af }} </b> </h4></a>
+      </h4>
+    </div>
+    <!-- <div id="collapse1" class="panel-collapse collapse in"> -->
+      <!-- <div class="checkbox">
+          <label><input type="checkbox" name="select" value="{{ af }}"  data-toggle="modal" data-target="#myModal"> Select to Edit </label> </input>
+      </div> -->
+      <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="color: white;float: right;">Click to Edit</button> --> 
+
+      <div class="panel-body"> <iframe src="{{ af }}.txt" style="width: 100%;height: 100%;border: none;"> </iframe>
+      </div>
+    <!-- </div> for collapse -->
+    </div>
+    </div>
+    <!-- </div> -->
+        <!-- h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><span class="glyphicon glyphicon-collapse-down">{{ p.patientName }}</span></a><div class="checkbox">
+        <label><input type="checkbox" value="{{p.patientName}}" name="checks"></label>"btn btn-info btn-lg btn-default" 
+      </div>
+        </h4> -->
+        
+      
+      
+  {% endfor %}
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Done</button>
+</form>
+</div>
+  <!-- </div> -->
+  <!-- </div> -->
+  <!-- <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <! <h4 class="modal-title">{{ af }}</h4> -->
+        <!-- </div>
+        <div class="modal-body">
+        <input type="text" class="form-control" name="inputEdit" value="{{ af }}" placeholder="Enter Your Edits">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default" style="color: black">Save and Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- </div>  -->
+  <!-- </div> -->
+
+  <!-- <div class="panel panel-default" style="width: 85%;height: 100%">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        <h4> <b> Access Explanation </b> </h4></a>
+      </h4>
+    </div>
+    <div class="panel-body"> <iframe src="explain.txt" style="width: 100%;height: 100%;border: none;"> </iframe>
+      </div>
+  </div>
+ -->
+
+  <!-- <button type="submit" class="btn btn-primary">Done</button> -->
+
+<!-- {% load static %}
+<img src="{% static "articles/EHR_logo.jpeg" %}" alt="ehrlogo", width="120" height="100" id = "imageContent">
+
+{% load static %}
+<img src="{% static "articles/UMBC_logo.png" %}" alt="umbclogo", width="100" height="100" id = "umbcimageContent"> -->
+<!-- <button type="submit" class="btn btn-info" id="button" value="{{ p.patientName }}"> -->
+    <!-- </button> -->

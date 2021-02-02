@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EHR System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color:#000000;
+      height: 100%;
+    }
+    #mainContent {
+    
+    height: 590px;
+	right: 10px;
+    
+}
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #000000;
+      color: white;
+      padding: 10px;
+	
+    }
+h1, h3 {
+    font-family: 'Proxima Nova';
+}
+.bg-1 {
+    background-color: #FFFFFF; /*blue*/
+    /*color: #0099ff;*/
+    color: #000000;
+}
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+
+    }
+
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+      <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="staffsignup"><span class="glyphicon glyphicon-info-sign"></span> Medical Staff Sign Up</a></li>
+        <li><a href="stafflogin"><span class="glyphicon glyphicon-log-in"></span> Medical Staff Sign In</a></li>
+        <li><a href="patientsignup"><span class="glyphicon glyphicon-info-sign"></span> Patient Sign Up</a></li>
+        <li><a href="patientlogin"><span class="glyphicon glyphicon-log-in"></span> Patient Sign In</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> About</a></li>
+        
+      </ul>   
+    </div>
+
+  </div>
+</nav>
+
+
+  <div class="container-fluid bg-1 text-center" id="mainContent">
+  <h2><big><i>Searchable Encryption with Attribute-Based Encryption and Access Control for Secure Access to Cloud Based EHR Systems</i></big></h2>
+  <!-- <h5>         ...the cloud's agent</h5> -->
+  {% load static %}
+  <!-- <img src="EHR_logo.jpeg" alt="ehrlogo", width="230" height="200"> -->
+  <img src="{% static "articles/EHR_logo.jpeg" %}" alt="ehrlogo", width="230" height="200"/>
+  <h3>Summer Research</h3>
+  <h3>University of Maryland, Baltimore County</h3>
+  {% load static %}
+  <img src="{% static "articles/UMBC_logo.png" %}" alt="umbclogo", width="150" height="150">
+</div>
+
+<!-- <div class="col-sm-2 sidenav">
+<img src="UMBC_logo.png" class="img-rounded" alt="logo" width="50" height="50">
+</div>
+<footer class="container-fluid text-center">
+  <p><h3>www.umbc.edu</h3></p>
+</footer> -->
+
+</body>
+</html>
