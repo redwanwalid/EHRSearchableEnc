@@ -75,8 +75,8 @@ def home(request):
     patientEHRfields = ['Diagnoses', 'Medication', 'Prescription', 'Allergies', 'LabResults', 'ImmunizationDates', 'DoctorNotes', 'BillingInfo']
 
     for a in patientEHRfields:
-        #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/' + a + '.html'
-        filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/' + a + '.html'
+        filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/' + a + '.html'
+        # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/' + a + '.html'
         # print(filepath)
         encomm = "cpabe-enc pub_key " + filepath + " 'Senior_Doctor or Ortho or Gynaecology or Billing'"
         os.system(encomm)
@@ -232,7 +232,7 @@ def patientsignup_view(request):
     patientData = PatientInfo.objects.all()
 
     for pD in patientData:
-        if pD.patientName == patientName:
+        if pD.patientName   == patientName:
             html = "<html><body> User aready exists..! <p> Your username is %s, please go back and login using your credentials. </p> </body> </html>" %pD.patientName
             return HttpResponse(html)
 
@@ -251,6 +251,7 @@ def patientlogin_view(request):
 
     for pD in patientData:
         if ((pD.patientName == patientName) and (pD.patientPassword == patientPassword)):
+            print('Patient ID ::', pD.id)
             loggedinUsers.extend(['None', patientName])
             patientEHRfields = ['Diagnoses', 'Medication', 'Prescription', 'Allergies', 'LabResults', 'ImmunizationDates', 'DoctorNotes', 'BillingInfo']
             return render(request, "patientehrview.html", {'allowedFields':patientEHRfields, 'patientName' : patientName})
@@ -260,8 +261,8 @@ def patientlogin_view(request):
 
 def runSPARQL(doctorName, patientName):
     g = Graph()
-    #g.parse("/Users/redwanwalid/Desktop/redwan/django_test_r/EHROntology_v2.owl")
-    g.parse("/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/EHROntology_v2.owl")
+    g.parse("/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/EHROntology_v2.owl")
+    # g.parse("/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/EHROntology_v2.owl")
 
     sparql = "SELECT ?predicate WHERE {<http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#" + str(doctorName) + "> ?predicate ?object .}"
 
@@ -325,8 +326,8 @@ def getSelectedPatient(request):
 def LabResults(request):
     # currentPatient = loggedinUsers[1]
     currentPatient = loggedinUsers[-1]
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/LabResults.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/LabResults.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/LabResults.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/LabResults.html'
     cpabefile = filepath + '.cpabe'
 
 
@@ -353,8 +354,8 @@ def LabResults(request):
 def Prescription(request):
     # currentPatient = loggedinUsers[1]
     currentPatient = loggedinUsers[-1]
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/Prescription.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/Prescription.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/Prescription.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/Prescription.html'
     cpabefile = filepath + '.cpabe'
 
     if os.path.isfile(cpabefile):
@@ -372,8 +373,8 @@ def Prescription(request):
 def Medication(request):
     # currentPatient = loggedinUsers[1]
     currentPatient = loggedinUsers[-1]
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/Medication.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/Medication.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/Medication.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/Medication.html'
     cpabefile = filepath + '.cpabe'
 
     if os.path.isfile(cpabefile):
@@ -393,8 +394,8 @@ def Allergies(request):
     # currentPatient = loggedinUsers[1]
     currentPatient = loggedinUsers[-1]
     #print(currentPatient)
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/Allergies.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/Allergies.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/Allergies.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/Allergies.html'
     cpabefile = filepath + '.cpabe'
     #print(cpabefile)
 
@@ -415,8 +416,8 @@ def Allergies(request):
 def DoctorNotes(request):
     # currentPatient = loggedinUsers[1]
     currentPatient = loggedinUsers[-1]
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/DoctorNotes.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/DoctorNotes.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/DoctorNotes.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/DoctorNotes.html'
     cpabefile = filepath + '.cpabe'
 
     if os.path.isfile(cpabefile):
@@ -435,8 +436,8 @@ def Diagnoses(request):
     currentPatient = loggedinUsers[-1]
     #print(loggedinUsers[1])
     #print(currentPatient)
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/Diagnoses.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/Diagnoses.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/Diagnoses.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/Diagnoses.html'
     #print(filepath)
     cpabefile = filepath + '.cpabe'
     #print(cpabefile)
@@ -458,8 +459,8 @@ def Diagnoses(request):
 def ImmunizationDates(request):
     # currentPatient = loggedinUsers[1]
     currentPatient = loggedinUsers[-1]
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/ImmunizationDates.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/ImmunizationDates.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/ImmunizationDates.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/ImmunizationDates.html'
     cpabefile = filepath + '.cpabe'
 
     if os.path.isfile(cpabefile):
@@ -478,8 +479,8 @@ def BillingInfo(request):
     # currentPatient = loggedinUsers[1]
     currentPatient = loggedinUsers[-1]
     print(currentPatient)
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/BillingInfo.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/BillingInfo.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/BillingInfo.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/BillingInfo.html'
     cpabefile = filepath + '.cpabe'
 
     if os.path.isfile(cpabefile):
@@ -525,8 +526,8 @@ def saveEdits(request):
             # b = 0
             # print(a[b])
             # EHR_Field = a[b]
-            #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/' + EHR_Field + '.html'
-            filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/' + EHR_Field + '.html'
+            filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/' + EHR_Field + '.html'
+            # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/' + EHR_Field + '.html'
             # print(filepath)
             encomm = "cpabe-enc pub_key " + filepath + " 'Senior_Doctor or Ortho or Gynaecology or Billing'"
             os.system(encomm)
@@ -547,8 +548,8 @@ def saveEdits(request):
 
     else:
         # os.system("cpabe-keygen -o priv_key pub_key master_key Ortho Gynaecology Billing Senior_Doctor")
-        #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/' + editField + '.html'
-        filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/' + editField + '.html'
+        filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/' + currentPatient + '/' + editField + '.html'
+        # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/' + currentPatient + '/' + editField + '.html'
         f = open(filepath, 'a+')
         f.write("<p>")
         f.write(newEdits)
@@ -563,8 +564,8 @@ def saveEdits(request):
 
 @xframe_options_sameorigin
 def explain(request):
-    #filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/accessExplain.html'
-    filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/accessExplain.html'
+    filepath = '/Users/redwanwalid/Desktop/DjangoApp/EHRSearchableEnc/django_test_r/PatientEHRs/accessExplain.html'
+    # filepath = '/afs/umbc.edu/users/r/w/rwalid1/home/EHR_application/django_test_r/PatientEHRs/accessExplain.html'
     f = open(filepath, 'r')
     filecontents = f.read()
 
