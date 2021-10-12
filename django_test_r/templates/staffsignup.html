@@ -87,11 +87,11 @@ h1, h3 {
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 
-      <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-        <li  class="active"><a href="staffsignup"><span class="glyphicon glyphicon-info-sign"></span> Staff Sign Up</a></li>
-        <li><a href="stafflogin"><span class="glyphicon glyphicon-log-in"></span> Staff Sign In</a></li>
-        <li><a href="patientsignup"><span class="glyphicon glyphicon-info-sign"></span> Patient Sign Up</a></li>
-        <li><a href="patientlogin"><span class="glyphicon glyphicon-log-in"></span> Patient Sign In</a></li>
+      <li><a href="{% url 'hello' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li  class="active"><a href="{% url 'staffsignup' %}"><span class="glyphicon glyphicon-info-sign"></span> Staff Sign Up</a></li>
+        <li><a href="{% url 'stafflogin' %}"><span class="glyphicon glyphicon-log-in"></span> Staff Sign In</a></li>
+        <li><a href="{% url 'patientsignup' %}"><span class="glyphicon glyphicon-info-sign"></span> Patient Sign Up</a></li>
+        <li><a href="{% url 'patientlogin' %}"><span class="glyphicon glyphicon-log-in"></span> Patient Sign In</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> About</a></li>
         
       </ul>   
@@ -104,7 +104,7 @@ h1, h3 {
 
 <div class="container" id="mainContent">
   <h2>  </h2>
-  <form action="/staffsignup_view/" method="get" class="form-horizontal" role="form">
+  <form action="{% url 'staffsignup_view' %}" method="get" class="form-horizontal" role="form">
     <div class="form-group">
       <label class="control-label col-sm-2" for="uid">User ID:</label>
       <div class="col-sm-10">

@@ -122,7 +122,7 @@ color:#00bfff;
 
 <div class="container" id="h1">
   <!-- <h2>Patient : {{ patientName }} </h2> -->
-  <form role="form" action="/saveedits/" method="get">
+  <form role="form" action="{% url 'saveEdits' %}" method="get">
   <div class="panel-group"  id="accordion"  style="width: 70%;height: 50%">
     {% for af in allowedFields %}
     <div class="panel panel-default" style="width: 70%;height: 100%">

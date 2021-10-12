@@ -7,69 +7,38 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
-from django.template.loader import get_template 				#yes
-from django.template import Context
-#from django.shortcuts import render_to_response				#no
-from django.shortcuts import render								#yes
-from django.views.decorators.csrf import csrf_protect 			#yes
-import rdflib
-from rdflib import Graph, URIRef								#yes
-import os														#yes
-from articles.models import StaffInfo							#yes
-from articles.models import PatientInfo							#yes
+from django.template.loader import get_template
+from django.shortcuts import render, redirect
+from rdflib import Graph, URIRef
+import os
+from articles.models import StaffInfo
+from articles.models import PatientInfo
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import csrf_exempt
-import hashlib
 import pickle
 from mmlwl16 import MMLWL16
 from charm.toolbox.pairinggroup import PairingGroup, GT
 from charm.core.engine.util import objectToBytes, bytesToObject
 import time
+from django.http import Http404, HttpResponseRedirect
+from django.urls import reverse
 
-
-
-#export DJANGO_SETTINGS_MODULE=mysite.settings
 
 searchtoken = []
 loggedinUsers = []
-# fieldsWithPermissions = []
-# allowedFiles = []
 Allowed_Fields = []
 attributes = []
 # os.system("cpabe-setup")
 
 def hello(request):
-    # name = "Maithilee"
-    # html = "<html><body>Hi %s, this seems to have worked!</body></html>" %name
-    # return HttpResponse(html)
+
     return render(request, 'home.html')
 
-
-def hello_template(request):
-    fname = "Maithilee"
-    lname = "Joshi"
-    t = get_template('hello.html')
-    html = t.render({'fname' : fname, 'lname':lname})
-    return HttpResponse(html)
-
-# Simpler method for the above method
-def hello_template_simple(request):
-    fname = "Maithilee"
-    lname = "Joshi"
-    return render(request, 'hello.html', {'fname':fname, 'lname':lname})
 
 def home(request):
     # print(patientName)
     print(loggedinUsers)
-    # print(type(loggedinUsers))
-    # currentPatient = loggedinUsers[1]
-    # print(a)
-    # currentPatient = loggedinUsers
-    # print(currentPatient)
-    # CurrentPat = currentPatient[1]
-    # currentPatient = loggedinUsers[0]
 
-    # currentPatient = loggedinUsers[1]
     currentPatient = loggedinUsers[-1]
 
     patientEHRfields = ['Diagnoses', 'Medication', 'Prescription', 'Allergies', 'LabResults', 'ImmunizationDates', 'DoctorNotes', 'BillingInfo']
@@ -83,12 +52,13 @@ def home(request):
     return render(request, 'home.html')
 
 def staffsignup(request):
+
     return render(request, 'staffsignup.html')
 
 def stafflogin(request):
     return render(request, 'stafflogin.html')
 
-#This function is saving new staff info in the database, need to check if the ontology is populating?
+# This function is saving new staff info in the database, need to check if the ontology is populating?
 def staffsignup_view(request):
     uid = request.GET.get('uid', '')
     username = request.GET.get('username', '')
@@ -109,6 +79,7 @@ def staffsignup_view(request):
     newUser.save()
     return render(request, 'stafflogin.html')
 
+# Should I incorporate ontology here?
 def stafflogin_view(request):
     uid = request.GET.get('uid', '')
     username = request.GET.get('username', '')
@@ -305,6 +276,7 @@ def getSelectedPatient(request):
     #print (fieldsWithPermissions)
 
     if (fieldsWithPermissions == []):
+        # Need to put a home button here
         return HttpResponse("Access Denied!")
 
     else:
@@ -570,120 +542,6 @@ def explain(request):
     filecontents = f.read()
 
     return HttpResponse(filecontents)
-    # return render('home.html')
-
-    # if str(newEdits).startswith('Prescription'):
-    # 	field = 'Prescription'
-    # elif str(newEdits).startswith('Medication'):
-    # 	print ("here")
-    # 	field = 'Medication'
-    # elif str(newEdits).startswith('LabResults'):
-    # 	field = 'LabResults'
-    # elif str(newEdits).startswith('ImmunizationDates'):
-    # 	field = 'ImmunizationDates'
-    # elif str(newEdits).startswith('Diagnoses'):
-    # 	field = 'Diagnoses'
-    # elif str(newEdits).startswith('Allergies'):
-    # 	field = 'Allergies'
-    # elif str(newEdits).startswith('BillingInfo'):
-    # 	field = 'BillingInfo'
-
-
-    # fieldIndex = allowedFiles.index(field)
-    # if fieldsWithPermissions[fieldIndex][1] == 'M':
-    # 	filepath = '/Users/redwanwalid/Desktop/redwan/django_test_r/django_test_r/PatientEHRs/' + currentPatient + '/' + field + '.html'
-    # 	f = open(filepath, 'a+')
-    # 	f.write("<p>")
-    # 	f.write(newEdits)
-    # 	f.write("</p>")
-    # 	return render_to_response("patientehrdetails.html", {'allowedFields':allowedFiles, 'patientName' : currentPatient, 'doctorName' : currentDoctor})
-
-    # else:
-    # 	html = "<html><body> TODO : Pop Up Box. For now, Sorry you do not have edit access </body><html>"
-    # 	return HttpResponse(html)
-
-
-
-    # if request.POST.get("button"):
-    # 	print ("Got Diagnoses!")
-
-    # return render_to_response("patientehrdetails.html", {'allowedFields':allowedFiles, 'patientName' : currentPatient, 'doctorName' : currentDoctor})
-    # return render_to_response("patientehrdetails.html", {'allowedFields':allowedFiles, 'patientName' : currentPatient, 'doctorName' : currentDoctor})
-
-'''
-For my own learning
-from rdflib import Graph, URIRef
-
-g = Graph()
-g.parse("/Users/redwanwalid/Desktop/redwan/test.owl")
-
-#for subj, pred, obj in g:
-    #print(subj)
-    # if (subj, pred, obj) not in g:
-    #     raise Exception("It better be!")
-
-makeSub = "http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Elizabeth"
-sub = URIRef(makeSub)
-
-res = []
-for triple in g.triples((sub,None,None)):
-    p = triple[1].split('#')[1]
-    #p = triple[1].split('#')
-    #p = triple[1]
-    #print(p)
-
-    if (p.startswith('can')):
-        permission = str(p[3])
-        print(permission)
-        if (permission == 'M'):
-            field = str(p[9:])
-            print(field)
-        else:
-            field = str(p[7:])
-
-        if (field and permission):
-            if field != 'VitalStats':
-                res.append((field, permission))
-
-
-print(res)
-'''
-
-'''
-#Previous Search Function using Hashlib md5
-
-def search(request):
-    query = request.GET.get('query', '')
-
-    hash_object = hashlib.md5(query.encode())
-    UserToken = hash_object.hexdigest()
-
-    patientData = []
-    patients = PatientInfo.objects.all()
-
-    with open('EHRindexFinal.data', 'rb') as filehandle:
-        Indexes = pickle.load(filehandle)
-        filehandle.close()
-
-    for p in patients:
-        for ind in Indexes:
-            for i in range(1):
-                # print(ind[i])
-                for x in range(1,2):
-                    if UserToken == ind[i] and p.patientName == ind[x] and p not in patientData:
-                        # if p.patientName == ind[x]:
-                        # print('There is a match')
-                        # print(p.patientName)
-                        # patientData.append(p)
-                        # if p not in patientData:
-                        print(p)
-                        # print(p.patientName)
-                        patientData.append(p)
-                        # QueryResult.append(ind)
-
-    return render(request, 'patientselectTESTcopy.html', {'doctorName' : loggedinUsers[-1], 'patientData' : patientData})
-
-'''
 
 '''
 #Previous SWRL query

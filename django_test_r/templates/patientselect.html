@@ -111,7 +111,7 @@ color:#00bfff;
 
 <div class="container" id="h1">
   <!-- <h2>Patient Details (Select one patient)</h2> -->
-  <form role="form" action="/getselectedpatient/" method="get">
+  <form role="form" action="{% url 'getSelectedPatient' %}" method="get">
     <table class="table table-striped">
     <thead>
       <tr>
@@ -150,6 +150,3 @@ color:#00bfff;
 <!-- <img src="{% static "articles/EHR_logo.jpeg" %}" alt="ehrlogo", width="100" height="100" id = "umbcimageContent"> -->
   </form>
 </div> 
-
-<!-- <button type="submit" class="btn btn-info" id="button" value="{{ p.patientName }}"> -->
-    <!-- </button> -->

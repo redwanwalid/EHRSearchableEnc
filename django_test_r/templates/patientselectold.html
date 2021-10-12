@@ -103,7 +103,7 @@ color:#00bfff;
 
 <div class="container" id="h1">
   <h2>Patient Details (Select one patient)</h2>
-  <form role="form" action="/getselectedpatient/" method="get">
+  <form role="form" action="{% url 'getSelectedPatient' %}" method="get">
   <div class="panel-group">
     {% for p in patientData %}
     <div class="panel panel-default">

@@ -8,11 +8,13 @@ from django.db import models
 
 
 class Article(models.Model):
+	id = models.AutoField(primary_key=True)
 	title = models.TextField(max_length=254)
 	body = models.TextField()
 	likes = models.IntegerField()
 
 class StaffInfo(models.Model):
+	id = models.AutoField(primary_key=True)
 	uid = models.TextField(max_length=25)
 	username = models.TextField(max_length=254)
 	password = models.TextField(max_length=25)
@@ -22,6 +24,7 @@ class StaffInfo(models.Model):
 	hward = models.TextField(max_length=25)
 
 class PatientInfo(models.Model):
+	id = models.AutoField(primary_key=True)
 	patientName = models.TextField(max_length=254)
 	patientPassword = models.TextField(max_length=25)
 	purpose = models.TextField(max_length=500)

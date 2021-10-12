@@ -28,12 +28,12 @@ SECRET_KEY = '&l7tfnvgy3*wma)4gabzh$jhbmi^7q!h(7w2%p$qos^@(s78x5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#Domain names which are allowed
+# Domain names which are allowed
 ALLOWED_HOSTS = []
 
 
 # Application definition
-#Build your apps here, products, think of it as components, little djago project itself
+# Build your apps here, products, think of it as components, little djago project itself
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'articles',
 ]
 
-#How request and securities are handled
+# How request and securities are handled
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-#this is how django knows how to route and get a url
+# this is how django knows how to route and get a url
 ROOT_URLCONF = 'django_test_r.urls'
 
 #how we store them, how they are rendered and how they work
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-#this is how server works
+# this is how server works
 WSGI_APPLICATION = 'django_test_r.wsgi.application'
 
 

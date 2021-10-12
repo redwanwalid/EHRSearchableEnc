@@ -1070,7 +1070,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#SeniorDoctor"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#Technician"/>
         <isCertifiedBy rdf:resource="http://www.semanticweb.org/umbcknacc/ontologies/2017/10/untitled-ontology-3#CBCS"/>
-        <canModify rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</canModify>
+        <canModifyBillingInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</canModifyBillingInfo>
     </owl:NamedIndividual>
     
 
